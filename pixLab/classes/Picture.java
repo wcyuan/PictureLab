@@ -97,6 +97,74 @@ public class Picture extends SimplePicture
       }
     }
   }
+
+  public void keepOnlyBlue() {
+	  Pixel[][] pixels = this.getPixels2D();
+	  for (Pixel[] rowArray : pixels)
+	  {
+		  for (Pixel pixelObj : rowArray)
+	      {
+			  pixelObj.setRed(0);
+			  pixelObj.setGreen(0);
+	      }
+	  }
+  }
+
+  public void negate() {
+	  Pixel[][] pixels = this.getPixels2D();
+	  for (Pixel[] rowArray : pixels)
+	  {
+		  for (Pixel pixelObj : rowArray)
+	      {
+			  pixelObj.setBlue(255 - pixelObj.getBlue());
+			  pixelObj.setRed(255 - pixelObj.getRed());
+			  pixelObj.setGreen(255 - pixelObj.getGreen());
+	      }
+	  }
+  }
+  
+  public void grayscale() {
+	  Pixel[][] pixels = this.getPixels2D();
+	  for (Pixel[] rowArray : pixels)
+	  {
+		  for (Pixel pixelObj : rowArray)
+	      {
+			  int ave = (pixelObj.getBlue() + pixelObj.getRed() + pixelObj.getGreen()) / 3;
+			  pixelObj.setBlue(ave);
+			  pixelObj.setRed(ave);
+			  pixelObj.setGreen(ave);
+	      }
+	  }
+  }
+
+  public void increaseContrast() {
+	  Pixel[][] pixels = this.getPixels2D();
+	  long total = 0;
+	  int num = 0;
+	  for (Pixel[] rowArray : pixels)
+	  {
+		  for (Pixel pixelObj : rowArray)
+	      {
+			  int ave = (pixelObj.getBlue() + pixelObj.getRed() + pixelObj.getGreen()) / 3;
+			  total += ave;
+			  num++;
+	      }
+	  }
+	  int ave = (int) (total /= num);
+	  for (Pixel[] rowArray : pixels)
+	  {
+		  for (Pixel pixelObj : rowArray)
+	      {
+			  pixelObj.setBlue(2*(pixelObj.getBlue() - ave));
+			  pixelObj.setRed(2*(pixelObj.getRed() - ave));
+			  pixelObj.setGreen(2*(pixelObj.getGreen() - ave));
+	      }
+	  }
+  }
+
+  public void fixUnderwater() {
+	  increaseContrast();
+  }
   
   /** Method that mirrors the picture around a 
     * vertical mirror in the center of the picture
@@ -228,5 +296,5 @@ public class Picture extends SimplePicture
     beach.zeroBlue();
     beach.explore();
   }
-  
+
 } // this } is the end of class Picture, put all new methods before this
