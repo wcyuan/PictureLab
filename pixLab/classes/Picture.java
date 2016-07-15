@@ -307,13 +307,13 @@ public class Picture extends SimplePicture
 	/** Mirror just part of a picture of a snowman */
 	public void mirrorArms()
 	{
-		mirrorPartial(27, 97, 13, 276, 276, false);
+		mirrorPartial(166, 195, 97, 292, 195, true);
 	}
 
 	/** Mirror just part of a picture of a seagull */
 	public void mirrorGull()
 	{
-		mirrorPartial(27, 97, 13, 276, 276, false);
+		mirrorPartial(230, 335, 230, 356, 356, false);
 	}
 
 	public void mirrorPartial(int rowStart, int rowEnd, int colStart, int colEnd,
