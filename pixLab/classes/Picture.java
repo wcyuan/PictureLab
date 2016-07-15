@@ -242,17 +242,15 @@ public void mirrorHorizontalBotToTop()
 
 public void mirrorDiagonal()
 {
-	// TODO -- this isn't done yet
 	Pixel[][] pixels = this.getPixels2D();
 	  Pixel topPixel = null;
 	  Pixel botPixel = null;
-	  int height = pixels.length;
-	  for (int row = 0; row < height / 2; row++)
+	  for (int row = 0; row < pixels[0].length && row < pixels.length; row++)
 	  {
-	    for (int col = 0; col < pixels[0].length; col++)
+	    for (int col = row+1; col < pixels[0].length && col < pixels.length; col++)
 	    {
 	      topPixel = pixels[row][col];
-	      botPixel = pixels[height - row - 1][col];
+	      botPixel = pixels[col][row];
 	      topPixel.setColor(botPixel.getColor());
 	    }
 	  } 
