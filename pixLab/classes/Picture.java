@@ -463,6 +463,43 @@ public class Picture extends SimplePicture
 		}
 	}
 
+	/**
+	 * Method to show large changes in color, both horizontally and vertically
+	 * 
+	 * @param edgeDist
+	 *          the distance for finding edges
+	 */
+	public void edgeDetection2(int edgeDist)
+	{
+		Pixel leftPixel = null;
+		Pixel nextPixel = null;
+		Pixel[][] pixels = this.getPixels2D();
+		Color nextColor = null;
+		for (int row = 0; row < pixels.length; row++)
+		{
+			for (int col = 0; col < pixels[0].length; col++)
+			{
+				if (col < pixels[0].length - 1) {
+					leftPixel = pixels[row][col];
+					nextPixel = pixels[row][col + 1];
+					nextColor = nextPixel.getColor();
+					if (leftPixel.colorDistance(nextColor) > edgeDist) {
+						leftPixel.setColor(Color.BLACK);
+						continue;
+					}
+				}
+				if (row < pixels.length - 1) {
+					nextPixel = pixels[row+1][col];
+					nextColor = nextPixel.getColor();
+					if (leftPixel.colorDistance(nextColor) > edgeDist) {
+						leftPixel.setColor(Color.BLACK);
+						continue;
+					}
+				}
+				leftPixel.setColor(Color.WHITE);
+			}
+		}
+	}
 	/*
 	 * Main method for testing - each class in Java can have a main method
 	 */
