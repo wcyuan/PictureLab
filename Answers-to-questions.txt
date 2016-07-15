@@ -125,4 +125,22 @@ A7:
 112
  
 -----------------------------------------------------------------
+
+A9:
+
+2. Work in groups to come up with another algorithm for edge detection.
+
+Instead of just looking at the pixel immediately to the side or up/down,
+you could look at squares of 3x3 pixels -- that is, for each pixel, look
+at the 8 pixels all around it to decide whether that pixel is an edge. Then
+instead of looking at the color distance from the center pixel to each
+of the surrounding pixels, you might look for different patterns, like if
+all of the pixels on one side are a different color than the pixels on the
+other side.  
+
+You could also assume that edges tend to be more than one pixel in size,
+so you are more likely to be an edge if one of the pixels near you
+was an edge.
+
+
  
