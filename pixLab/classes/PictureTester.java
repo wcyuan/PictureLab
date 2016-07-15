@@ -125,7 +125,7 @@ public class PictureTester
   
   public static void testMyCollage()
   {
-    Picture canvas = new Picture("640x480.jpg");
+  	Picture canvas = new Picture("640x480.jpg");
     canvas.myCollage();
     canvas.explore();
   }

@@ -419,7 +419,21 @@ public class Picture extends SimplePicture
 
 	public void myCollage()
 	{
-		
+		// 72x41
+		Picture robot = new Picture("robot.jpg");
+		// 65x308 -> 120x400
+  	Picture swan = new Picture("swan.jpg");
+  	// 78x107 -> 202x352
+  	Picture kitten = new Picture("kitten2.jpg");
+
+  	this.copy(robot, 0, 0);
+  	robot.mirrorDiagonal();
+  	this.copy(robot, 100, 0);
+  	swan.zeroBlue();
+  	this.copyPartial(swan, 200, 0, 65, 308, 120, 400);
+  	kitten.grayscale();
+  	this.copyPartial(kitten, 300, 0, 78, 107, 202, 352);
+  	this.mirrorVertical();
 	}
 	
 	/**
