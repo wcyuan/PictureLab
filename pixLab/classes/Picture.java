@@ -354,14 +354,43 @@ public class Picture extends SimplePicture
 	 */
 	public void copy(Picture fromPic, int startRow, int startCol)
 	{
+		copyPartial(fromPic, startRow, startCol, -1, -1, -1, -1);
+	}
+
+	/**
+	 * copy from the passed fromPic to the specified startRow and startCol in the
+	 * current picture
+	 * 
+	 * @param fromPic
+	 *          the picture to copy from
+	 * @param startRow
+	 *          the start row to copy to
+	 * @param startCol
+	 *          the start col to copy to
+	 */
+	public void copyPartial(Picture fromPic, int startRow, int startCol,
+			int fromRowStart, int fromColStart, int fromRowEnd, int fromColEnd)
+	{
 		Pixel fromPixel = null;
 		Pixel toPixel = null;
 		Pixel[][] toPixels = this.getPixels2D();
 		Pixel[][] fromPixels = fromPic.getPixels2D();
-		for (int fromRow = 0, toRow = startRow; fromRow < fromPixels.length
+		if (fromRowStart < 0 || fromRowStart > fromPixels.length) {
+			fromRowStart = 0;
+		}
+		if (fromColStart < 0 || fromColStart > fromPixels[0].length) {
+			fromColStart = 0;
+		}
+		if (fromRowEnd < 0 || fromRowEnd > fromPixels.length) {
+			fromRowEnd = fromPixels.length;
+		}
+		if (fromColEnd < 0 || fromColEnd > fromPixels[0].length) {
+			fromColEnd = fromPixels[0].length;
+		}
+		for (int fromRow = fromRowStart, toRow = startRow; fromRow < fromRowEnd
 				&& toRow < toPixels.length; fromRow++, toRow++)
 		{
-			for (int fromCol = 0, toCol = startCol; fromCol < fromPixels[0].length
+			for (int fromCol = fromColStart, toCol = startCol; fromCol < fromColEnd
 					&& toCol < toPixels[0].length; fromCol++, toCol++)
 			{
 				fromPixel = fromPixels[fromRow][fromCol];
@@ -370,7 +399,7 @@ public class Picture extends SimplePicture
 			}
 		}
 	}
-
+	
 	/** Method to create a collage of several pictures */
 	public void createCollage()
 	{
@@ -388,6 +417,11 @@ public class Picture extends SimplePicture
 		this.write("collage.jpg");
 	}
 
+	public void myCollage()
+	{
+		
+	}
+	
 	/**
 	 * Method to show large changes in color
 	 * 
