@@ -17,7 +17,6 @@ public class PictureTester
     beach.explore();
   }
 
-  /** Method to test keepOnlyBlue */
   public static void testKeepOnlyBlue()
   {
     Picture beach = new Picture("beach.jpg");
@@ -26,7 +25,6 @@ public class PictureTester
     beach.explore();
   }
 
-  /** Method to test negate */
   public static void testNegate()
   {
     Picture beach = new Picture("beach.jpg");
@@ -35,7 +33,6 @@ public class PictureTester
     beach.explore();
   }
 
-  /** Method to test grayscale */
   public static void testGrayscale()
   {
     Picture beach = new Picture("beach.jpg");
@@ -44,7 +41,6 @@ public class PictureTester
     beach.explore();
   }
 
-  /** Method to test fixUnderwater */
   public static void testFixUnderwater()
   {
     Picture beach = new Picture("water.jpg");
@@ -62,7 +58,6 @@ public class PictureTester
     caterpillar.explore();
   }
   
-  /** Method to test mirrorVertical */
   public static void testMirrorVerticalRightToLeft()
   {
     Picture caterpillar = new Picture("caterpillar.jpg");
@@ -71,7 +66,6 @@ public class PictureTester
     caterpillar.explore();
   }
 
-  /** Method to test mirrorVertical */
   public static void testMirrorHorizontal()
   {
     Picture caterpillar = new Picture("caterpillar.jpg");
@@ -80,7 +74,6 @@ public class PictureTester
     caterpillar.explore();
   }
 
-  /** Method to test mirrorVertical */
   public static void testMirrorHorizontalBotToTop()
   {
     Picture caterpillar = new Picture("caterpillar.jpg");
@@ -89,7 +82,6 @@ public class PictureTester
     caterpillar.explore();
   }
 
-  /** Method to test mirrorVertical */
   public static void testMirrorDiagonal()
   {
     Picture caterpillar = new Picture("beach.jpg");
@@ -104,6 +96,22 @@ public class PictureTester
     Picture temple = new Picture("temple.jpg");
     temple.explore();
     temple.mirrorTemple();
+    temple.explore();
+  }
+  
+  public static void testMirrorArms()
+  {
+    Picture temple = new Picture("snowman.jpg");
+    temple.explore();
+    temple.mirrorArms();
+    temple.explore();
+  }
+  
+  public static void testMirrorGull()
+  {
+    Picture temple = new Picture("seagull.jpg");
+    temple.explore();
+    temple.mirrorGull();
     temple.explore();
   }
   
@@ -141,8 +149,8 @@ public class PictureTester
 	//testMirrorVerticalRightToLeft();
 	//testMirrorHorizontal();
 	//testMirrorHorizontalBotToTop();
-	testMirrorDiagonal();
-    //testMirrorTemple();
+	//testMirrorDiagonal();
+    testMirrorTemple();
     //testMirrorArms();
     //testMirrorGull();
     //testMirrorDiagonal();
